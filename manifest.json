@@ -1,0 +1,12 @@
+{
+  "manifest_version": 2,
+  "name": "BetterBoard",
+  "version": "6.9",
+  "content_security_policy": "script-src 'self' https://ajax.googleapis.com; object-src 'self'",
+  "content_scripts": [{
+    "matches": [
+      "https://lipscomb.blackboard.com/ultra/*"
+    ],
+    "js": ["jquery.min.js", "fix_courses.js"]}],
+    "web_accessible_resources": ["wallpaper.jpg", "spinner.png", "music.ogg", "logo.png"]
+}
