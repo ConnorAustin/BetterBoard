@@ -1,5 +1,13 @@
 // Change this to fit the actual courses you want
-const actual_courses = ['Spring 2018 - Senior Seminar (CCT-4053-01)', 'Spring 2018 - Numerical Methods (CS-3433-01)', 'Spring 2018 - Graduation (GN-999X-01)', 'Spring 2018 - Collbrtv Serious Game Devlpmnt (GD-3273-01)', 'Spring 2018 - Artificial Intelligence (CS-4453-01)'];
+
+actual_course = [];
+function read_courses() {
+  chrome.storage.sync.get({
+    courseList: '',
+  }, function(items) {
+    actual_courses = items.courseList.split(',');
+  });
+}
 
 // If you don't want to hide courses for a bit, set this to false
 const hide_courses = true;
@@ -79,12 +87,17 @@ body {
 // Fix courses
 setInterval(() => {
     if(hide_courses) {
-        $('.current-term').find('.course-element-card').each(function(i, e) {
-            let title = $(this).find('.course-title h3').html();
-            if(actual_courses.indexOf(title) == -1) {
-                $(this).hide();
-            }
-        });
+        read_courses();
+        if(actual_courses.length != 0)
+        {
+          $('.current-term').find('.course-element-card').each(function(i, e) {
+              let title = $(this).find('.course-title h3').html();
+              if(actual_courses.indexOf(title) == -1) {
+                  $(this).hide();
+              }
+          });
+
+        }
 
         // Blackboard gets angry that when we remove stuff
         // Well how about I remove your error message, huh Blackboard?
