@@ -2,12 +2,18 @@
   "manifest_version": 2,
   "name": "BetterBoard",
   "icons": { "128": "icon.png"},
-  "options_page": "options.html",
   "version": "6.9",
   "content_security_policy": "script-src 'self' https://ajax.googleapis.com; object-src 'self'",
   "permissions": [
     "storage"
   ],
+	"browser_action": {
+		"default_icon": {
+			"128": "icon.png"
+		},
+		"default_title": "Better Board",
+		"default_popup": "popup.html"
+	},
   "content_scripts": [{
     "matches": [
       "https://lipscomb.blackboard.com/ultra/*"
