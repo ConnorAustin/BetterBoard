@@ -147,12 +147,12 @@ function fixCourses()
 {
 	if(hide_courses) {
 			$('.current-term').find('.course-element-card').each(function(i, e) {
-					let title = $(this).find('.course-title h3').html();
+					let title = $(this).find('.course-title h3').html().toLowerCase();
 					$(this).show();
 					found = false;
 					for(key in actual_courses)
 					{
-						course = actual_courses[key];
+						course = actual_courses[key].toLowerCase();
 						if(title.includes(course))
 						{
 							found = true;
